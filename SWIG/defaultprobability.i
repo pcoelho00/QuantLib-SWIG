@@ -30,6 +30,7 @@
 %include interpolation.i
 %include termstructures.i
 %include piecewiseyieldcurve.i
+%include bonds.i
 
 %{
 using QuantLib::DefaultProbabilityTermStructure;
@@ -309,33 +310,31 @@ class Name : public DefaultProbabilityTermStructure {
         Name(const Date& referenceDate,
              const std::vector<ext::shared_ptr<DefaultProbabilityHelper> >& instruments,
              const DayCounter& dayCounter,
-             Real accuracy = 1.0e-12,
              const Interpolator& i = Interpolator(),
              const _IterativeBootstrap& b = _IterativeBootstrap()) {
-            return new Name(referenceDate, instruments, dayCounter, accuracy, i,
-                            Name::bootstrap_type(b.accuracy, b.minValue, b.maxValue));
+            return new Name(referenceDate, instruments, dayCounter,
+                            i, Name::bootstrap_type(b.accuracy, b.minValue, b.maxValue));
         }
         Name(Integer settlementDays, const Calendar& calendar,
              const std::vector<ext::shared_ptr<DefaultProbabilityHelper> >& instruments,
              const DayCounter& dayCounter,
-             Real accuracy = 1.0e-12,
              const Interpolator& i = Interpolator(),
              const _IterativeBootstrap& b = _IterativeBootstrap()) {
             return new Name(settlementDays, calendar, instruments, dayCounter,
-                            accuracy, i, Name::bootstrap_type(b.accuracy, b.minValue, b.maxValue));
+                            i, Name::bootstrap_type(b.accuracy, b.minValue, b.maxValue));
         }
         Name(const Date& referenceDate,
              const std::vector<ext::shared_ptr<DefaultProbabilityHelper> >& instruments,
              const DayCounter& dayCounter,
              const _IterativeBootstrap& b) {
-            return new Name(referenceDate, instruments, dayCounter, 1e-12,
+            return new Name(referenceDate, instruments, dayCounter,
                             Interpolator(), Name::bootstrap_type(b.accuracy, b.minValue, b.maxValue));
         }
         Name(Integer settlementDays, const Calendar& calendar,
              const std::vector<ext::shared_ptr<DefaultProbabilityHelper> >& instruments,
              const DayCounter& dayCounter,
              const _IterativeBootstrap& b) {
-            return new Name(settlementDays, calendar, instruments, dayCounter, 1e-12,
+            return new Name(settlementDays, calendar, instruments, dayCounter,
                             Interpolator(), Name::bootstrap_type(b.accuracy, b.minValue, b.maxValue));
         }
     }
@@ -350,6 +349,21 @@ class Name : public DefaultProbabilityTermStructure {
 
 // add other instantiations if you need them
 export_piecewise_default_curve(PiecewiseFlatHazardRate,HazardRate,BackwardFlat);
+
+
+// bond engine based on default probability
+
+%{
+using QuantLib::RiskyBondEngine;
+%}
+
+%shared_ptr(RiskyBondEngine)
+class RiskyBondEngine : public PricingEngine {
+  public:
+    RiskyBondEngine(const Handle<DefaultProbabilityTermStructure>& defaultCurve,
+                    Real recoveryRate,
+                    const Handle<YieldTermStructure>& riskFreeCurve);
+};
 
 
 #endif

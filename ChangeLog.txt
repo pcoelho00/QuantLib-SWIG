@@ -1,1204 +1,473 @@
-commit 83d91ae6f508bb2cca5c0cb1b32c8f76bfad3c54
+commit efcaf5ba74de586d7a221b489649b6f9f3183d34
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Sat, 24 Oct 2020 13:01:24 +0200
+Date:   Mon, 12 Apr 2021 11:12:19 +0200
 
-    Set version to 1.20 final.
+    Set version to 1.24 final.
 
  Python/setup.py | 2 +-
  configure.ac    | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-commit c20457d9f0cd55d411a5144aad617383b58e9c02
+commit cffebd94a976d6233b3aeb6040bb1ae21128268a
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 14 Oct 2020 16:46:23 +0200
+Date:   Thu, 1 Apr 2021 14:55:08 +0200
 
-    Update changelog and news.
-
- ChangeLog.txt | 1432 ++++++++++++++++++++++++++++++++++++++-------------------
- News.md       |   49 +-
- 2 files changed, 971 insertions(+), 510 deletions(-)
-
-commit 2a04ee0218c6e53b19b3bea91cd797d4f63f1530
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 14 Oct 2020 13:26:05 +0200
-
-    Set version to 1.20 rc
+    Set version to 1.24 rc
 
  Python/setup.py | 2 +-
  configure.ac    | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-commit 57d8d96c2b465f04379ce975a55c7e0989627858
-Merge: 7fc0362 8f53118
+commit 17203e5952e02acaa59b749373fc2fe6515a9be5
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 14 Oct 2020 09:01:35 +0200
+Date:   Thu, 14 Oct 2021 15:40:17 +0200
 
-    Merge pull request #324.
+    Update news and changelog
+
+ ChangeLog.txt | 809 ++++++++++++++++++++--------------------------------------
+ News.md       |  48 ++--
+ 2 files changed, 302 insertions(+), 555 deletions(-)
+
+commit ddeb984570a7c7248ee5ba5e5f56024ab4c34223
+Merge: 13b66cb 48debe5
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Wed, 13 Oct 2021 12:49:49 +0200
+
+    Merge pull request #421.
     
-    Exposing FDHeston double barrier engine mixingFactor to SWIG
+    Export new per-instance switches between par and indexed coupons
 
-commit 8f53118585e22380bb75818d20fe3a7e0340b2ed
-Author: jackgillett101 <jack.gillett@cantab.net>
-Date:   Wed, 14 Oct 2020 08:09:01 +0800
-
-    Exposing FDHeston double barrier engine mixingFactor to SWIG
-
- SWIG/options.i | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-commit 7fc03620dd55c626ac5cc23172ee9e44f6911e12
+commit 48debe56dda10caeba20eae758be44cc48e697b7
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 13 Oct 2020 23:37:39 +0200
+Date:   Wed, 13 Oct 2021 10:30:42 +0200
 
-    Sync C# project.
+    Export new per-instance switches between par and indexed coupons
 
- CSharp/csharp/NQuantLib.csproj | 49 ++++++++++++++++++++++++++++++++++++------
- 1 file changed, 42 insertions(+), 7 deletions(-)
+ SWIG/cashflows.i   | 19 +++++++++++++------
+ SWIG/ratehelpers.i | 12 ++++++++----
+ SWIG/swap.i        | 34 +++++++++++++++++++++++++---------
+ 3 files changed, 46 insertions(+), 19 deletions(-)
 
-commit c5450b1aa1ca1b54563b032286e03770a8aa738b
-Merge: b7b41b0 e149533
+commit 13b66cb8d00c5b786d156ce41320a51751548874
+Merge: 5f9c2d7 11d15b7
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 13 Oct 2020 22:43:06 +0200
+Date:   Wed, 13 Oct 2021 00:30:22 +0200
 
-    Merge pull request #323.
+    Merge pull request #419.
     
-    Allow usage of std::tuple
+    Avoid deprecated methods calls
 
-commit b7b41b06d53997ab643b34f17f2cf6502cd0a65d
-Merge: 553252d 1e07312
+commit 11d15b7697e16e341c49502d6866dddcda62c99b
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 13 Oct 2020 21:10:03 +0200
+Date:   Tue, 12 Oct 2021 22:18:07 +0200
 
-    Merge pull request #322.
+    Avoid deprecated methods calls
+
+ SWIG/cashflows.i | 14 +++++++++++---
+ SWIG/money.i     |  4 ++--
+ 2 files changed, 13 insertions(+), 5 deletions(-)
+
+commit 5f9c2d7cfc7a884f34a1ec701a20443b456c0ec7
+Merge: 108f7af b65368e
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Tue, 12 Oct 2021 20:17:17 +0200
+
+    Merge pull request #418.
     
-    Return overnight index from OvernightIndex::clone.
+    Export new ThirdWednesdayInclusive rule
 
-commit 553252d8b2bc9f6cfda1c87afdd8def0128f9af1
-Merge: a438cfe 662f086
+commit 108f7afd5686ba7ebb1108828402d2ddae7c5ade
+Merge: 4418c80 7c3847e
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 13 Oct 2020 21:09:29 +0200
+Date:   Tue, 12 Oct 2021 18:28:41 +0200
 
-    Merge pull request #321.
+    Merge pull request #417.
     
-    Exposing FDHeston barrier engine mixingFactor to SWIG
+    Export Chilean calendar
 
-commit a438cfeb7d219245f722c19653cbec0a058cf77e
-Merge: a2f3eae 5febcee
+commit b65368e5cb34c5a11c51a5c54702dd56a2385655
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 13 Oct 2020 16:29:54 +0200
+Date:   Tue, 12 Oct 2021 18:15:17 +0200
 
-    Merge pull request #304.
+    Export new ThirdWednesdayInclusive rule
+
+ SWIG/scheduler.i | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4418c80c96b227fee78e6f180ae40e6e8c2964c5
+Merge: 8c4423b edbe43e
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Tue, 12 Oct 2021 17:56:12 +0200
+
+    Merge pull request #416.
     
-    Inflation cap floor
+    Export RiskyBondEngine
 
-commit 1e07312671ef95c256f4e21d25afbc5f4ec95d76
+commit 7c3847eff9372a745f12d17d548d7f4be694cc06
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 13 Oct 2020 16:05:28 +0200
+Date:   Tue, 12 Oct 2021 17:31:38 +0200
 
-    Return overnight index from QvernightIndex::clone.
+    Export Chilean calendar
 
- SWIG/indexes.i | 8 ++++++--
+ SWIG/calendars.i | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit edbe43e4fc95febb4e24709973711621892e93a5
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Tue, 12 Oct 2021 16:11:07 +0200
+
+    Export RiskyBondEngine
+
+ SWIG/defaultprobability.i | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+commit 8c4423b7147dfb462dfe5fe30c53014435f7a754
+Merge: cdeb413 be03a3e
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Mon, 27 Sep 2021 17:07:28 +0200
+
+    Merge pull request #411.
+    
+    Remove a couple of deprecated names
+
+commit cdeb41397f637c865cd5d0d69a929d51dba58d27
+Merge: d356606 8bcd130
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Mon, 27 Sep 2021 16:01:19 +0200
+
+    Merge pull request #410.
+    
+    Export new cross-currency swap rate helpers
+
+commit be03a3ef910b686d90a280ec9f248c15305e0138
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Mon, 27 Sep 2021 15:23:14 +0200
+
+    Remove deprecated names
+
+ SWIG/options.i | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit 8bcd1307ee77af625e737d4a63313b0c80f2da34
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Mon, 27 Sep 2021 15:14:37 +0200
+
+    Keep exporting old names for backward compatibility
+
+ SWIG/ratehelpers.i | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+commit 0bffe6e60f782dd2cd59f5c202361ce98d2e7b8b
+Author: Marcin Rybacki <m.rybacki@basispoint.io>
+Date:   Sun, 19 Sep 2021 14:03:15 +0200
+
+    Added casting functions for xccy rate helpers.
+
+ SWIG/ratehelpers.i | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
-commit e149533d9e9ec68290b3720650a62493438e81d6
+commit ec508de5608a6a5a1b5a76f324d6bf2c577263ba
+Author: Marcin Rybacki <m.rybacki@basispoint.io>
+Date:   Sun, 19 Sep 2021 13:57:13 +0200
+
+    Renamed const notional xccy rate helper.
+
+ Python/test/ratehelpers.py |  2 +-
+ SWIG/ratehelpers.i         | 28 ++++++++++++++--------------
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+
+commit d356606f38690b845e90748bb0c58c50c2703b79
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 13 Oct 2020 15:02:48 +0200
+Date:   Tue, 14 Sep 2021 12:07:17 +0200
 
-    Remove unneeded stubs
+    Update Binder link
 
- SWIG/tuple.i | 10 ----------
- 1 file changed, 10 deletions(-)
+ Python/examples/README.md | 9 ++++-----
+ README.md                 | 2 +-
+ 2 files changed, 5 insertions(+), 6 deletions(-)
 
-commit 5febcee11c4076353b28258892744a845cd65feb
+commit 26a28951bb05f5d3d33e6c27311273d0fdb96056
+Merge: 30119c8 51a28ab
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Mon, 12 Oct 2020 17:48:30 +0200
+Date:   Thu, 26 Aug 2021 14:31:58 +0200
 
-    Small interface changes.
-
- SWIG/inflation.i | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-commit 662f086f9de3c1a597768d8dc7c4555907575735
-Author: jackgillett101 <jack.gillett@cantab.net>
-Date:   Mon, 12 Oct 2020 21:56:09 +0800
-
-    Exposing FDHeston barrier engine mixingFactor to SWIG
-
- SWIG/options.i | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-commit a2f3eae983dd51464d20d85e5004b634d9281341
-Merge: 2983709 994eab1
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Mon, 12 Oct 2020 15:05:05 +0200
-
-    Merge pull request #320.
+    Merge pull request #405.
     
-    Exposing NoExceptLocalVolSurface to SWIG
+     Remove `ZeroCouponSwap`'s `startDate()` and `maturityDate()`
 
-commit 29837094e5a095b14f09e787eebc327de976e4c0
-Merge: 1a02398 43d6a41
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Mon, 12 Oct 2020 15:04:39 +0200
+commit 51a28abc93a04901ce3710fe0f0151602acf8d43
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Thu, 26 Aug 2021 12:26:38 +0200
 
-    Merge pull request #319.
-    
-    Exposing HestonSLVProcess's mixingFactor to SWIG
+    Reverting to previous revision
 
-commit 994eab11768bb0a264401db1300fccf3e7b1275e
-Author: jackgillett101 <jack.gillett@cantab.net>
-Date:   Sun, 11 Oct 2020 10:27:17 +0800
-
-    Exposing NoExceptLocalVolSurface to SWIG
-
- SWIG/volatilities.i | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
-
-commit 1a02398d611d282613398d14da52e586eb59e981
-Merge: 932c27c 12ff309
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Mon, 5 Oct 2020 14:57:14 +0200
-
-    Merge pull request #318.
-    
-    Exposing QL's mixingFactor to SWIG
-
-commit 932c27c65a39cdba040f16b587a7b0bbbda04474
-Merge: 1d275f5 1d4d2e7
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Mon, 5 Oct 2020 14:52:23 +0200
-
-    Merge pull request #316.
-    
-    added Crank-Nicolson scheme and latest CV for Heston model
-
-commit 43d6a41cbe7eec2f56b9542aaebb7033c7a26ae3
-Author: jackgillett101 <jack.gillett@cantab.net>
-Date:   Sat, 3 Oct 2020 23:08:26 +0800
-
-    Update slv.i
-    
-    Exposing QuantLib's mixingFactor to SWIG HestonSLVProcess
-
- SWIG/slv.i | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-commit 12ff309522a952a2e8171d0fb93ca4e4a14ac490
-Author: jackgillett101 <jack.gillett@cantab.net>
-Date:   Sat, 3 Oct 2020 22:13:03 +0800
-
-    Exposing QL's mixingFactor to SWIG for two Heston SLV models and a vanilla pricing engine
-
- SWIG/options.i | 11 +++++++----
- SWIG/slv.i     | 10 ++++++----
- 2 files changed, 13 insertions(+), 8 deletions(-)
-
-commit 1d275f5ef4c687610ccb99d0b344a373f882c8ac
-Merge: 3c59e27 a7c183e
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 2 Oct 2020 22:01:24 +0200
-
-    Merge pull request #293.
-    
-    First pass at using std pointers
-
-commit a7c183e0ea14ba92a16935b1169bc148b0116ab7
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 2 Oct 2020 19:18:32 +0200
-
-    Remove obsolete dynamic casts.
-
- SWIG/bondfunctions.i | 415 ++++++++++++++-------------------------------------
- SWIG/bonds.i         |   4 +-
- SWIG/cashflows.i     |  32 ++--
- SWIG/options.i       |  12 +-
- 4 files changed, 130 insertions(+), 333 deletions(-)
-
-commit 8bb1b46b8a5e95932cae6bbc91a6e8546e5442da
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 2 Oct 2020 18:38:28 +0200
-
-    Move tuple to separate file.
-
- SWIG/fdm.i          |  3 +-
- SWIG/ql.i           |  1 +
- SWIG/tuple.i        | 84 +++++++++++++++++++++++++++++++++++++++++++++++++++++
- SWIG/vectors.i      | 58 ------------------------------------
- SWIG/volatilities.i |  1 +
- 5 files changed, 87 insertions(+), 60 deletions(-)
-
-commit b4f20b9fa8cfb98224678fe2ffdf8bb8f6bc9948
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 2 Oct 2020 18:09:06 +0200
-
-    Shorten declarations.
-
- SWIG/basketoptions.i       |  36 ++---
- SWIG/blackformula.i        |   8 +-
- SWIG/bondfunctions.i       | 144 +++++++++---------
- SWIG/bonds.i               |  44 +++---
- SWIG/calibrationhelpers.i  |  36 ++---
- SWIG/callability.i         |   4 +-
- SWIG/capfloor.i            |   6 +-
- SWIG/cashflows.i           | 116 +++++++--------
- SWIG/common.i              |  21 +--
- SWIG/convertiblebonds.i    |  22 +--
- SWIG/creditdefaultswap.i   |  12 +-
- SWIG/defaultprobability.i  |  12 +-
- SWIG/dividends.i           |   4 +-
- SWIG/fdm.i                 | 354 ++++++++++++++++++++++-----------------------
- SWIG/fittedbondcurve.i     |  14 +-
- SWIG/forward.i             |   2 +-
- SWIG/fra.i                 |   2 +-
- SWIG/gaussian1dmodel.i     |  40 ++---
- SWIG/indexes.i             |  38 ++---
- SWIG/inflation.i           |  64 ++++----
- SWIG/instruments.i         |  14 +-
- SWIG/interpolation.i       |  16 +-
- SWIG/marketelements.i      |   6 +-
- SWIG/montecarlo.i          |   6 +-
- SWIG/observer.i            |   8 +-
- SWIG/old_volatility.i      |   6 +-
- SWIG/options.i             | 282 ++++++++++++++++++------------------
- SWIG/payoffs.i             |   6 +-
- SWIG/piecewiseyieldcurve.i |  20 +--
- SWIG/ratehelpers.i         |  68 ++++-----
- SWIG/shortratemodels.i     |  22 +--
- SWIG/slv.i                 |  26 ++--
- SWIG/stochasticprocess.i   |  24 +--
- SWIG/swap.i                |  50 +++----
- SWIG/swaption.i            |  38 ++---
- SWIG/vectors.i             |  16 +-
- SWIG/volatilities.i        | 108 +++++++-------
- 37 files changed, 848 insertions(+), 847 deletions(-)
-
-commit 1d4d2e7ed79c470b0d85fae62c3d694b20409b05
-Author: klausspanderen <klaus@spanderen.de>
-Date:   Thu, 24 Sep 2020 14:03:54 +0200
-
-    formatting
-
- SWIG/options.i | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-commit 567fc962f96f601ec1e986c4017dbf26b40e378e
-Author: klausspanderen <klaus@spanderen.de>
-Date:   Thu, 24 Sep 2020 14:00:39 +0200
-
-    added Crank-Nicolson scheme and latest CV for Heston model
-
- SWIG/options.i | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
-
-commit 9c7bbecff898c9d9a3df14359fc0d6b32eab1194
-Author: Joseph C Wang <joequant@gmail.com>
-Date:   Sun, 20 Sep 2020 20:57:10 +0800
-
-    modify swig to use QuantLib::ext to allow std::classes
-
- SWIG/basketoptions.i       |  36 ++---
- SWIG/blackformula.i        |   8 +-
- SWIG/bondfunctions.i       | 144 +++++++++---------
- SWIG/bonds.i               |  44 +++---
- SWIG/calibrationhelpers.i  |  36 ++---
- SWIG/callability.i         |   4 +-
- SWIG/capfloor.i            |   6 +-
- SWIG/cashflows.i           | 116 +++++++--------
- SWIG/common.i              |  18 ++-
- SWIG/convertiblebonds.i    |  22 +--
- SWIG/creditdefaultswap.i   |  12 +-
- SWIG/defaultprobability.i  |  12 +-
- SWIG/dividends.i           |   4 +-
- SWIG/fdm.i                 | 354 ++++++++++++++++++++++-----------------------
- SWIG/fittedbondcurve.i     |  13 +-
- SWIG/forward.i             | 182 +++++++++++------------
- SWIG/fra.i                 |   2 +-
- SWIG/gaussian1dmodel.i     |  40 ++---
- SWIG/indexes.i             |  38 ++---
- SWIG/inflation.i           |  64 ++++----
- SWIG/instruments.i         |  14 +-
- SWIG/interpolation.i       |  16 +-
- SWIG/marketelements.i      |   6 +-
- SWIG/montecarlo.i          |   6 +-
- SWIG/observer.i            |   8 +-
- SWIG/old_volatility.i      |   6 +-
- SWIG/options.i             | 282 ++++++++++++++++++------------------
- SWIG/payoffs.i             |   6 +-
- SWIG/piecewiseyieldcurve.i |  20 +--
- SWIG/ratehelpers.i         |  68 ++++-----
- SWIG/shortratemodels.i     |  22 +--
- SWIG/slv.i                 |  26 ++--
- SWIG/stochasticprocess.i   |  24 +--
- SWIG/swap.i                |  50 +++----
- SWIG/swaption.i            |  38 ++---
- SWIG/vectors.i             |  22 ++-
- SWIG/volatilities.i        | 112 +++++++-------
- 37 files changed, 946 insertions(+), 935 deletions(-)
-
-commit 3c59e270f7837636999708f18543f6ff97838e34
-Merge: b958f16 8060a88
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Thu, 17 Sep 2020 09:15:01 +0200
-
-    Merge pull request #315.
-    
-    Fix default value for amortizing-bond coupon spreads.
-
-commit 8060a8884a02acf14dca33fd2e93274d2561c181
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 16 Sep 2020 15:23:39 +0200
-
-    Fix default value for amortizing-bond coupon spreads.
-
- SWIG/bonds.i | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-commit b958f16dcf4567e6a401b74c856525297c8b03e2
-Merge: 31f94ce 90085f6
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 16 Sep 2020 13:12:41 +0200
-
-    Merge pull request #314.
-    
-    Inflation unit tests
-
-commit 90085f678ef6e7c480bf1e978aac768ad90b133c
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Wed, 16 Sep 2020 09:09:55 +0200
-
-    Fixed the failing unit tests.
-
- Python/test/inflation.py | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-commit f1cfd628b223bfb202af59a7af205664227f30ba
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 18:21:06 +0200
-
-    Corrected a typo in the comment.
-
- Python/test/inflation.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-commit bddc391a7711ece5efd75cb2baf087cab6d16c68
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 11:21:39 +0200
-
-    Removed start date from error messages.
-
- Python/test/inflation.py | 13 +------------
- 1 file changed, 1 insertion(+), 12 deletions(-)
-
-commit 022a5a0202a4df1ddea5c7620d232fb255808d2e
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 10:24:37 +0200
-
-    Remove unnecessary spaces.
-
- Python/test/inflation.py | 4 ----
- 1 file changed, 4 deletions(-)
-
-commit 44169cf1a2a7944f54109c66f5ca3a7c4e92db69
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 10:18:59 +0200
-
-    Remove unused import which would break Python2
-
- Python/test/inflation.py | 2 --
- 1 file changed, 2 deletions(-)
-
-commit 39bf53421d062393e3ed79593f95ca5b526010d0
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 10:15:11 +0200
-
-    Remove unnecessary spaces.
-
- Python/test/inflation.py | 5 -----
- 1 file changed, 5 deletions(-)
-
-commit 2c8df89dcb138e9f4403ae78aabe19fef621c43c
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 10:11:24 +0200
-
-    Some more renamings.
-
- Python/test/inflation.py | 44 ++++++++++++++++++++++----------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
-
-commit edc705aee12936482a5510f0d4bfde373d352d45
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 09:44:04 +0200
-
-    Renamed a number of variables.
-
- Python/test/inflation.py | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
-
-commit 2be0044fa04f9835693d66053405ec4fff8b8ba5
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 09:41:31 +0200
-
-    Remove unnecessary comment.
-
- Python/test/inflation.py | 2 --
- 1 file changed, 2 deletions(-)
-
-commit 19ffef87a39c534c3cf85cdb6af8376aeeb6609a
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 09:40:56 +0200
-
-    Remove unnecessary comment.
-
- Python/test/inflation.py | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
-
-commit 53212b8d3fe39f8b4cb37d8303df729da3511295
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 09:39:30 +0200
-
-    Reordered tests..
-
- Python/test/inflation.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-commit c3a8109d63bbe974b14eb13459acfa63d21a1941
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 09:37:07 +0200
-
-    Corrected some typos.
-
- Python/test/inflation.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-commit 100fd9196df92bb08f5a3740dc81dabcf4aa4460
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 11 Sep 2020 09:35:03 +0200
-
-    Minor corrections.
-
- Python/test/inflation.py | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
-
-commit bdee97a95349a672617acbbf7eb7d8cce20090a4
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 21:40:04 +0200
-
-    Minor renamings.
-
- Python/test/inflation.py | 36 +++++++++++++++++-------------------
- 1 file changed, 17 insertions(+), 19 deletions(-)
-
-commit c9ae440d5d79d8a0e7575425048bfb415ed72142
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 21:37:52 +0200
-
-    Adjusted setting the valuation date.
-
- Python/test/inflation.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-commit bcff6b0cf24ee51614c4933e24ebc93bbfbae5b9
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 21:35:59 +0200
-
-    Added data source.
-
- Python/test/inflation.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-commit d94a4c601a2aaa4171d3932f575d637727d5ee1d
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 20:50:32 +0200
-
-    Adjusted convention to snake case.
-
- Python/test/volatilities.py | 4 ++--
+ SWIG/swap.i | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-commit ac7d79ac229045e9dd249659c42348ceadda7c7f
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 20:49:21 +0200
+commit 90bb587a34e7e55026cd6cbc97a9487c7847e921
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Thu, 26 Aug 2021 12:16:04 +0200
 
-    Reorganized unit tests.
+    Will this fix the python test case?
 
- Python/test/inflation.py | 147 ++++++++++++++++++++++++++++-------------------
- 1 file changed, 87 insertions(+), 60 deletions(-)
+ SWIG/swap.i | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-commit 6c9a8aef4a2b852e2ee283f85ec1e4fd84d0b4e7
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 20:01:43 +0200
+commit 352dbd12a6de0aeafc35ed044c54ebc0886f56ed
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Thu, 26 Aug 2021 12:04:18 +0200
 
-    Added more descriptive fail messages.
+    Removed startDate() and maturityDate() from ZeroCouponSwap interface
 
- Python/test/inflation.py | 179 +++++++++++++++++++++++++++++++++++++++--------
- 1 file changed, 148 insertions(+), 31 deletions(-)
+ SWIG/swap.i | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-commit 7ee37898f89bdd3ffb39635ea6b5af9c879ed41f
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 18:29:34 +0200
+commit 71914595fc3fa9d507eacce82dc4c731cbe37cbd
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Thu, 26 Aug 2021 10:33:31 +0200
 
-    Removed Python3 specific syntax.
+    Virtual and override for Swaps startDate() and maturityDate()
 
- Python/test/inflation.py | 58 ++++++++++++++++++++++++------------------------
- 1 file changed, 29 insertions(+), 29 deletions(-)
+ SWIG/swap.i | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-commit 0252b722cb3a8ac0b248f4fcfe0c39453dcf0f8b
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 10 Sep 2020 18:26:49 +0200
-
-    Python unit tests for inflation.
-
- Python/test/inflation.py | 350 ++++++++++++++++++-----------------------------
- 1 file changed, 132 insertions(+), 218 deletions(-)
-
-commit 31f94ce3a5d94b493d0d10e6024ed7303d0807a4
-Merge: 4f748ca 73b96e5
+commit 30119c83eb1c9bcbec7b64bc20d3a26f8e2214cf
+Merge: a0cf0e8 c196e7f
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 9 Sep 2020 16:05:49 +0200
+Date:   Wed, 25 Aug 2021 11:23:43 +0200
 
-    Merge pull request #312.
+    Merge pull request #402.
     
-    Reset evaluation date after tests.
+    Avoids current warnings on MSVC
 
-commit 4f748ca62b15c8773ea453bbe118d8b7390174ee
-Merge: 823fd78 99c1224
+commit c196e7f968f718ba153233314b41699fa11c5454
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Wed, 25 Aug 2021 10:23:54 +0200
+
+    Reenable deprecation warnings at the end brings back the warnings.
+
+ SWIG/ql.i | 4 ----
+ 1 file changed, 4 deletions(-)
+
+commit e43b8d678df6d0626bce038b989ebbfcd3fdbfa7
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Wed, 25 Aug 2021 10:12:17 +0200
+
+    Reenable deprecation warnings
+
+ SWIG/ql.i | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit a0cf0e8268307e53f4f4cff1d1d46740eea4ea10
+Merge: 30381f2 c9d5f62
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 9 Sep 2020 16:04:25 +0200
+Date:   Wed, 25 Aug 2021 09:49:54 +0200
 
-    Merge pull request #311.
+    Merge pull request #404.
     
-    Don't rename exported American-option engines.
+    Add endOfMonth param to SwapRateHelper constructors
 
-commit 823fd785ad265080bc9dfd4b8566dfc56852e626
-Merge: d3b9bd8 a9974d7
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 9 Sep 2020 11:55:30 +0200
+commit 2403a083da705d0dbef2f016c9875e20eb91617c
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Wed, 25 Aug 2021 08:41:42 +0200
 
-    Merge pull request #310.
-    
-    Export new day counters.
+    Replaced const_cast<...>
 
-commit 99c1224fd8fbdb4fc1243ad7336337d081923679
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 9 Sep 2020 10:42:29 +0200
+ SWIG/volatilities.i | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-    Don't rename exported American-option engines.
+commit c9d5f623abce9116e97eac732e1d09105e5ad93f
+Author: cabo40 <cfso100@gmail.com>
+Date:   Tue, 24 Aug 2021 16:36:48 -0500
 
- CSharp/csharp/NQuantLib.csproj     | 4 ++--
- CSharp/examples/EquityOption.cs    | 4 ++--
- Java/examples/EquityOptions.java   | 8 ++++----
- Python/examples/american-option.py | 4 ++--
- SWIG/options.i                     | 4 ++--
- Scala/examples/EquityOptions.scala | 4 ++--
- 6 files changed, 14 insertions(+), 14 deletions(-)
+    Add endOfMonth param to SwapRateHelper constructors
 
-commit 73b96e567c91b192dcd3792102f251e202e0b370
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 9 Sep 2020 11:08:53 +0200
+ SWIG/ratehelpers.i | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-    Reset evaluation date after tests.
+commit 3da060b94ad21d522f3989542a360ff8e37d64eb
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Tue, 24 Aug 2021 20:36:00 +0200
 
- Python/test/americanquantooption.py |  2 +-
- Python/test/assetswap.py            |  3 +++
- Python/test/blackformula.py         |  3 +++
- Python/test/bonds.py                |  4 ++--
- Python/test/capfloor.py             |  3 +++
- Python/test/cms.py                  |  3 +++
- Python/test/fdm.py                  |  2 +-
- Python/test/gjrgarch.py             |  6 ++++++
- Python/test/ratehelpers.py          | 12 ++++++------
- Python/test/slv.py                  |  2 +-
- Python/test/swaption.py             |  5 ++++-
- Python/test/volatilities.py         |  5 ++++-
- 12 files changed, 37 insertions(+), 13 deletions(-)
+    Avoids current warnings on MSVC
 
-commit d3b9bd892e429bde78fb0e161b3b06df65ea6fe6
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Wed, 9 Sep 2020 11:31:07 +0200
+ SWIG/indexes.i      | 2 +-
+ SWIG/ql.i           | 4 ++++
+ SWIG/swap.i         | 4 ++--
+ SWIG/volatilities.i | 8 ++++----
+ 4 files changed, 11 insertions(+), 7 deletions(-)
 
-    Pin requirement for Python 2.7 build
-
- .travis/python2.build | 1 +
- 1 file changed, 1 insertion(+)
-
-commit 4a3a82de5a4f420f526a710510842ffc247820f1
-Merge: a50c83c 55134ff
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 8 Sep 2020 22:25:54 +0200
-
-    Merge pull request #307.
-    
-    Swaption volatility cube
-
-commit a50c83cac00de0f686d75516c644c7f349b61708
+commit 30381f23cf126969d1f300a7c49ec98c72986d9b
 Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-Date:   Tue, 8 Sep 2020 14:02:32 +0000
+Date:   Tue, 24 Aug 2021 14:02:08 +0000
 
     Update copyright list in license
 
  LICENSE.TXT | 1 +
  1 file changed, 1 insertion(+)
 
-commit 5418848909518b348078db73df0d1dc1b9fe375a
+commit 46cf0fd77eadb2027890a3a8b791138c0d83a915
+Merge: ae6190c c577c34
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 8 Sep 2020 16:01:44 +0200
+Date:   Tue, 24 Aug 2021 16:01:51 +0200
 
-    Don't attribute to a human commits made by bots.
-
- .github/workflows/copyrights.yml | 1 -
- .github/workflows/misspell.yml   | 1 -
- 2 files changed, 2 deletions(-)
-
-commit a9974d77433fde980d39a4ba5541880a8ccfc120
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 8 Sep 2020 15:34:25 +0200
-
-    Export new day counters.
-
- SWIG/daycounters.i | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
-
-commit 14a0d971e112ebf061e9a95ce70d84ffce2b8ee2
-Merge: c2ba4d4 10377a4
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Tue, 8 Sep 2020 15:30:24 +0200
-
-    Merge pull request #306.
+    Merge pull request #400.
     
-    Swaption delta and annuity
+    Makes Period equatable and comparable in C#
 
-commit bcbf3040cfe6c1f6ae2e92c9ad58696387cb0e81
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 20:27:56 +0200
+commit c577c345e84b08771071a5115f43a2368a01a906
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Tue, 24 Aug 2021 14:25:56 +0200
 
-    Removed trailing whitespace.
+    Added more operators and test cases...
 
- Python/test/volatilities.py | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ CSharp/examples/Times.cs | 182 ++++++++++++++++++++++++++++++++++++++++++-----
+ SWIG/date.i              |  33 ++++++++-
+ 2 files changed, 196 insertions(+), 19 deletions(-)
 
-commit ede0c1aea4e4cb4119d2f6bb701ab032294883fd
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 15:25:47 +0200
+commit 9d344b3250c8f49e1b036aef287c34fd60d7345f
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Mon, 23 Aug 2021 19:02:46 +0200
 
-    Swaption volatility unit tests in Python.
+    Prepared test case
 
- Python/test/volatilities.py | 32 ++++++++++++++++++--------------
- 1 file changed, 18 insertions(+), 14 deletions(-)
+ CSharp/examples/Times.cs | 48 ++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 40 insertions(+), 8 deletions(-)
 
-commit 13bf3c1aeaceee38eb9953f928d5d5c12dc6cdbd
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 15:13:21 +0200
+commit a33a16566f31cb26919ad0c6e5c4cbd7964f0243
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Mon, 23 Aug 2021 17:45:32 +0200
 
-    Swaption volatility unit tests in Python.
+    Period as IEquatable<Period>, IComparable and IComparable<Period>
 
- Python/test/QuantLibTestSuite.py | 52 ++++++++++++++++++++--------------------
- 1 file changed, 26 insertions(+), 26 deletions(-)
+ CSharp/examples/Times.cs | 20 ++++++++++++----
+ SWIG/date.i              | 61 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 76 insertions(+), 5 deletions(-)
 
-commit 82bedc4eade4e54acd3742ddc1a5b200ec485336
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 15:12:56 +0200
+commit 984c34114b26e3574ef055ed64c2d708704894e2
+Author: RalfKonrad <github@eckel-consulting.de>
+Date:   Mon, 23 Aug 2021 11:21:57 +0200
 
-    Swaption volatility unit tests in Python.
+    Added Times Project
 
- Python/test/QuantLibTestSuite.py |  52 +++++++--------
- Python/test/volatilities.py      | 132 ++++++++++++++++++++++++++++++++++-----
- 2 files changed, 142 insertions(+), 42 deletions(-)
+ CSharp/Makefile.am           |   2 +
+ CSharp/QuantLib.sln          |  49 ++++++++++------
+ CSharp/examples/Times.cs     |  38 ++++++++++++
+ CSharp/examples/Times.csproj | 137 +++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 209 insertions(+), 17 deletions(-)
 
-commit 731d59a72fdac15b2447b315d459ab82a9a566a2
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 14:27:19 +0200
+commit ae6190c76e77f38086bf81a1e634f0f8215d5192
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Thu, 19 Aug 2021 18:01:15 +0200
 
-    Swaption volatility unit tests in Python.
+    Add manual trigger to CI build
 
- Python/test/volatilities.py | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
-commit f46306a7488a7a4d0ea091eb2cf18937b93eaf79
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 14:19:46 +0200
-
-    Swaption volatility unit tests in Python.
-
- Python/test/volatilities.py | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-commit b82410715920e7cd533a657c292f1b15a8c24af4
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 14:18:50 +0200
-
-    Swaption volatility unit tests in Python.
-
- Python/test/QuantLibTestSuite.py | 52 +++++++++++++++++------------------
- Python/test/volatilities.py      | 59 ++++++++++++++++++++++------------------
- 2 files changed, 58 insertions(+), 53 deletions(-)
-
-commit fa0a8292f80a86a246973ff9bf6c6d7a98398be1
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 13:24:50 +0200
-
-    Swaption volatility unit tests in Python.
-
- Python/test/volatilities.py | 102 +++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 96 insertions(+), 6 deletions(-)
-
-commit 4ed7244c0e2953084f9e2a558431525105cd90e2
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 13:08:05 +0200
-
-    Swaption volatility unit tests in Python.
-
- Python/test/QuantLibTestSuite.py | 52 ++++++++++++++++++++--------------------
- Python/test/volatilities.py      | 52 ++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 78 insertions(+), 26 deletions(-)
-
-commit bf6cab397e788acce34d0686f7d64aa685f0763b
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sun, 6 Sep 2020 12:15:40 +0200
-
-    Swaption volatility unit tests in Python.
-
- Python/test/QuantLibTestSuite.py |   2 +
- Python/test/volatilities.py      | 160 ++++++++++++++++++++++++++++++++++++---
- 2 files changed, 152 insertions(+), 10 deletions(-)
-
-commit 20e6102d55f3b4cc966730aab8f73bd3940c0856
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sat, 5 Sep 2020 22:33:14 +0200
-
-    Swaption vol unit tests in Python.
-
- Python/test/volatilities.py | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
-
-commit 1399e6b83371bb386400253630771c322176d2bf
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Sat, 5 Sep 2020 16:50:31 +0200
-
-    Updated as indexed cash flow cast call.
-
- Python/test/inflation.py | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-commit 10377a46a705cd68103bda25c5ab3ba99b999110
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 4 Sep 2020 14:00:26 +0200
-
-    Adjusted string literals to comply with Python2.
-
- Python/test/swaption.py | 46 +++++++++++++++++++++++++++++++---------------
- 1 file changed, 31 insertions(+), 15 deletions(-)
-
-commit 17508f6b9f4df40c9c92cf2142d395151e4414e8
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 4 Sep 2020 13:08:52 +0200
-
-    Remove function annotations to fix Python2 build.
-
- Python/test/swaption.py | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
-
-commit b2590dc9b154c9b2ed76fe4ff227736cbe2a65b1
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 4 Sep 2020 12:45:09 +0200
-
-    Swaption volatility cube unit test in Python.
-
- Python/test/volatilities.py | 121 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 121 insertions(+)
-
-commit 1ebe5cfddda7800cbf5724bc30db98ab6c0ad109
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 4 Sep 2020 09:40:22 +0200
-
-    Exposed swaption volatility cube.
-
- SWIG/volatilities.i | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
-
-commit 50f53bddc36ee2a5b3b40112b2c46ff2b3c2996c
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Wed, 2 Sep 2020 19:05:30 +0200
-
-    Updated swaption delta test condition.
-
- Python/test/swaption.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-commit 931ef485efd0f9aabc7408e59e91f728df7448d8
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 27 Aug 2020 20:14:25 +0200
-
-    Updated copyright information.
-
- Python/test/inflation.py | 2 +-
+ .github/workflows/linux.yml | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-commit 8ddbed5f5ab1d8378a5230dfa5a8ae37db06d991
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 27 Aug 2020 20:12:27 +0200
+commit 7454a51d32b52e03bb62c52b4a8ceadf6bf3f2b5
+Author: Marcin Rybacki <m.rybacki@basispoint.io>
+Date:   Tue, 17 Aug 2021 11:55:13 +0200
 
-    Updated copyright information.
+    Exposed resetting xccy swap.
 
- Python/test/swaption.py | 2 +-
- SWIG/swaption.i         | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ SWIG/ratehelpers.i | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-commit 96f2e5f0a0931f3f9c73de6af9d122a8127b780c
-Author: Matthias Lungwitz <lungwitz@gmail.com>
-Date:   Sat, 15 Aug 2020 23:14:48 +0200
-
-    Pair of DoubleVectors.
-
- SWIG/vectors.i | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-commit 9e2e2a87407f906efbd515b654f3ee5a85358e41
-Author: Matthias Lungwitz <lungwitz@gmail.com>
-Date:   Sat, 15 Aug 2020 22:58:46 +0200
-
-    InterpolatedYoYInflationOptionletVolatilityCurve
-
- SWIG/inflation.i | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
-
-commit c2ba4d4d337897710ef9a10f7483a2c0fbf79089
-Merge: de614a4 6521b94
+commit d4cb81f41a8c4495d85970fc3fa3bd8e97e2233a
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Sat, 15 Aug 2020 22:25:13 +0200
+Date:   Fri, 13 Aug 2021 16:33:27 +0200
 
-    Merge pull request #303.
+    Use shields.io for PyPI badge
+
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 0b21d5aeba220d89c2eb63abe1388b23ac63b0b7
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Mon, 2 Aug 2021 15:54:19 +0000
+
+    Update copyright list in license
+
+ LICENSE.TXT | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8d6c7197a52d14a0be5b69d57ea7eb6d60ad510a
+Merge: 2fa7801 fdbab6d
+Author: Luigi Ballabio <luigi.ballabio@gmail.com>
+Date:   Mon, 2 Aug 2021 17:54:04 +0200
+
+    Merge pull request #394.
     
-    Export a few inflation-related classes.
+    Exposing cliquet options and pricing engines to SWIG
 
-commit bb7f2ebc6ceb728359b93f1df7111fa0b4b33f63
-Author: Matthias Lungwitz <lungwitz@gmail.com>
-Date:   Sat, 15 Aug 2020 21:38:41 +0200
+commit 2fa78017455753a751cfa3cec8a8da1bb1ef5ee4
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Mon, 19 Jul 2021 18:00:51 +0000
 
-    YoYOptionletHelper
-
- SWIG/inflation.i | 132 +++++++++++++++++++++++++++++++++----------------------
- 1 file changed, 80 insertions(+), 52 deletions(-)
-
-commit 6521b9477b4ac5aa1dda6540be09c77ca4f17c5f
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Sat, 15 Aug 2020 21:01:10 +0200
-
-    Export a few inflation-related classes.
-
- SWIG/inflation.i    | 97 +++++++++++++++++++++++++++++++++++++++++++++++++----
- SWIG/volatilities.i | 52 ++++++++++++++++++++++++++++
- 2 files changed, 142 insertions(+), 7 deletions(-)
-
-commit 7d700db7ce53b352427df280699193ad13bfb0e2
-Author: Matthias Lungwitz <lungwitz@gmail.com>
-Date:   Sat, 15 Aug 2020 20:29:06 +0200
-
-    YoY Surface, Engine, Stripper.
-
- SWIG/inflation.i | 150 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 148 insertions(+), 2 deletions(-)
-
-commit de614a48217531c79a0b37a484f9245d51474b4f
-Merge: ee140fe a60573b
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Sat, 15 Aug 2020 17:36:41 +0200
-
-    Merge pull request #302.
+    Bump actions/stale from 3 to 4
     
-    Improvements to Date interface
-
-commit a60573b22de470f1e112f91b12976bdb3b585ada
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Sat, 15 Aug 2020 13:35:01 +0200
-
-    Make Date comparable and convertible to string in C#.
-
- SWIG/date.i | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
-
-commit cddf0cbc9d8789f2f2b50f924e36822ed0d1d5ea
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Sat, 15 Aug 2020 13:33:59 +0200
-
-    Add a few missing operators.
-
- SWIG/date.i | 34 ++++++++++++++++++++++++++++++----
- 1 file changed, 30 insertions(+), 4 deletions(-)
-
-commit ee419a4c1f167983e4997b9478f1c93edd789f64
-Author: Matthias Lungwitz <lungwitz@gmail.com>
-Date:   Sat, 15 Aug 2020 01:06:13 +0200
-
-    Add InterpolatedYoYCapFloorTermPriceSurface.
-
- SWIG/inflation.i     | 92 ++++++++++++++++++++++++++++++++++++++++++++++++++--
- SWIG/interpolation.i |  4 ++-
- 2 files changed, 92 insertions(+), 4 deletions(-)
-
-commit ee140fe11901bd0af36941ff213314f75ae9358c
-Merge: 47e41ac a0fd8fc
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 21:50:13 +0200
-
-    Merge pull request #301.
+    Bumps [actions/stale](https://github.com/actions/stale) from 3 to 4.
+    - [Release notes](https://github.com/actions/stale/releases)
+    - [Changelog](https://github.com/actions/stale/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/actions/stale/compare/v3...v4)
     
-    Add some missing inspectors to a few exported classes.
-
-commit bebf2e1be6ed074f081753e3166af544515fcfc5
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 14 Aug 2020 18:47:08 +0200
-
-    Update after merging with upstream.
-
- SWIG/cashflows.i | 20 --------------------
- 1 file changed, 20 deletions(-)
-
-commit a0fd8fcd5fbb40d49592826e089c142baa536dbe
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 18:32:50 +0200
-
-    Add some missing inspectors to a few exported classes.
-
- SWIG/cashflows.i      | 1 +
- SWIG/common.i         | 1 +
- SWIG/inflation.i      | 5 +++++
- SWIG/old_volatility.i | 7 +++++++
- SWIG/optimizers.i     | 4 ++++
- 5 files changed, 18 insertions(+)
-
-commit 47e41acaf2ec8d0819dd85e2e329577bd2bb8792
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 18:01:41 +0200
-
-    Fix minor problems in Python tests.
-
- Python/test/ratehelpers.py |  6 ++++++
- Python/test/sabr.py        | 12 ++++++------
- 2 files changed, 12 insertions(+), 6 deletions(-)
-
-commit 428e1307a4a34f9ec05a3dcab9a88e979117b0c9
-Merge: 3a76e3c 2747cf0
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 18:00:48 +0200
-
-    Merge pull request #300.
+    ---
+    updated-dependencies:
+    - dependency-name: actions/stale
+      dependency-type: direct:production
+      update-type: version-update:semver-major
+    ...
     
-    Export Cox-Ingersoll-Ross short-rate model.
+    Signed-off-by: dependabot[bot] <support@github.com>
 
-commit 3a76e3c427eaf003414f4562272aa94755fb34a1
-Merge: 1a7cbaa 221a7bc
+ .github/workflows/stale.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 401fdd200312869e8cb13ec9fe1c5f63c2f73f69
+Merge: beeaa75 b8ff99e
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 17:05:51 +0200
+Date:   Fri, 16 Jul 2021 23:16:28 +0200
 
-    Merge pull request #299.
+    Merge pull request #395.
     
-    Export IndexedCashFlow class.
+    Avoid deprecated constructors removed in C++
 
-commit 2747cf0e6bfa5d17fbe0f76784c217327704f5ba
+commit b8ff99e6ee3f7b21c50c8718b87b683b48a65b19
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 16:46:04 +0200
+Date:   Fri, 16 Jul 2021 15:35:58 +0200
 
-    Export Cox-Ingersoll-Ross short-rate model.
+    Fix test
 
- SWIG/shortratemodels.i | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
-
-commit 221a7bc25f8cfe0364084f651a0a83b2068fb4a6
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 16:24:45 +0200
-
-    Export IndexedCashFLow class.
-
- SWIG/cashflows.i | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-commit 1a7cbaa9433433f71e999405d78f59590eda6b36
-Merge: 416220d c80fe94
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 16:04:26 +0200
-
-    Merge pull request #298.
-    
-    Export callable zero-coupon bond.
-
-commit c80fe94b45e6d832e0359c365045b1fc58653d95
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 15:30:50 +0200
-
-    Export callable zero-coupon bond.
-
- SWIG/bonds.i | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
-
-commit 416220d25d105a93011e847f8508aec76fcb8df1
-Merge: 336f7fa 1b9b8cb
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 15:21:26 +0200
-
-    Merge pull request #297.
-    
-    Export SABR interpolation; return SABR smile from swaption cube.
-
-commit 1b9b8cb440a7c3fe5e44fa7dcd470a666991525d
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 12:49:54 +0200
-
-    Export SABR interpolation; return SABR smile from swaption cube.
-
- SWIG/interpolation.i |  83 +++++++++++++++++++++++++++++++++
- SWIG/volatilities.i  | 127 ++++++++++++++++++++++++++++++---------------------
- 2 files changed, 158 insertions(+), 52 deletions(-)
-
-commit 336f7fad19616fe8a169a64f3e568d514d84aec6
-Merge: cf3e8c0 618b93a
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 12:42:35 +0200
-
-    Merge pull request #296.
-    
-    Minor wrapper fixes
-
-commit 618b93acd0a5cf12704323df6aabc0666d6f42e2
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 12:10:21 +0200
-
-    Use templates explicitly instead of typedefs.
-
- SWIG/marketelements.i | 18 ++++++++++++------
- SWIG/options.i        | 39 +++++++++++++++++++++++++--------------
- 2 files changed, 37 insertions(+), 20 deletions(-)
-
-commit dfeb383c01ff9b686a24a531875814195bb159a7
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 12:09:56 +0200
-
-    Fix include guard.
-
- SWIG/interpolation.i | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-commit 7cc2690d7e8e64b8a91635a57e8f49328668f276
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 12:09:31 +0200
-
-    Remove unused typedef.
-
- SWIG/fittedbondcurve.i | 1 -
+ Python/test/inflation.py | 1 -
  1 file changed, 1 deletion(-)
 
-commit 3ee26a531015f9c3b168a0e84ff50da6864521f6
+commit 4502060e5a74689ac7e5f981c7bd1ff3075c7537
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Fri, 14 Aug 2020 12:08:45 +0200
+Date:   Wed, 14 Jul 2021 18:43:43 +0200
 
-    Avoid name clashes.
+    Avoid deprecated constructors removed in C++
 
- SWIG/defaultprobability.i  |  8 ++++----
- SWIG/piecewiseyieldcurve.i | 50 ++++++++++++++++++++++++----------------------
- 2 files changed, 30 insertions(+), 28 deletions(-)
+ SWIG/inflation.i | 26 --------------------------
+ 1 file changed, 26 deletions(-)
 
-commit cf3e8c0593607017457cb8d4fd2d8d53f292d7c8
-Merge: c835ff2 737cacc
+commit beeaa75dd576b0b89c67db6e6b0150fe95c68e09
 Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Mon, 10 Aug 2020 15:19:04 +0200
+Date:   Thu, 15 Apr 2021 16:27:56 +0200
 
-    Merge pull request #295.
-    
-    Export ex-coupon feature for more classes.
-
-commit f59a2445952fc74d05ae24b7d42ff9fa881c5fe7
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Mon, 10 Aug 2020 15:04:39 +0200
-
-    Fixed the failing unit tests for swaption delta.
-
- Python/test/swaption.py | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-commit 6325e47f2b112f91de1d3b70aa43329bffc08944
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Mon, 10 Aug 2020 14:59:14 +0200
-
-    Swaption unit tests for Python - clean up.
-
- Python/test/swaption.py | 294 +++++++++++++++++++++++++-----------------------
- 1 file changed, 156 insertions(+), 138 deletions(-)
-
-commit 737caccfc300b8e7c107510a8aec1fd369394da1
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Sat, 8 Aug 2020 00:13:54 +0200
-
-    Export ex-coupon feature for more classes.
-
- SWIG/bonds.i            | 18 +++++++++++++++---
- SWIG/cashflows.i        | 28 ++++++++++++++++++++++++----
- SWIG/convertiblebonds.i | 12 ++++++++++--
- SWIG/ql.i               |  2 +-
- 4 files changed, 50 insertions(+), 10 deletions(-)
-
-commit 49d3812ebbb65958fad606519066e7b2b996031b
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Thu, 6 Aug 2020 18:40:04 +0200
-
-    Added annuity to swaption results.
-
- Python/test/swaption.py | 202 ++++++++++++++++++++++++++++++++++++++----------
- SWIG/swaption.i         |   4 +
- 2 files changed, 164 insertions(+), 42 deletions(-)
-
-commit 6fe011dfb96812d8341e175cf2c1807236cc2482
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Wed, 5 Aug 2020 11:49:58 +0200
-
-    Updated docstring in swaption unit tests.
-
- Python/test/swaption.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-commit e3fd42919ea2f68d0f47abec378d1b67f79b3221
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Wed, 5 Aug 2020 11:47:28 +0200
-
-    Added Python unit tests for inflation.
-
- Python/test/QuantLibTestSuite.py |   2 +
- Python/test/inflation.py         | 464 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 466 insertions(+)
-
-commit fa14e2dc899d497b51e1d97177bfbe7196a706e1
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Wed, 5 Aug 2020 10:33:58 +0200
-
-    Added unit test in Python for swaption delta.
-
- Python/test/QuantLibTestSuite.py |   2 +
- Python/test/swaption.py          | 147 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 149 insertions(+)
-
-commit d34d9f8d6782a5a50eeca8b846eea9f3438d1599
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Tue, 4 Aug 2020 11:00:29 +0200
-
-    Added swaption delta to output.
-
- SWIG/swaption.i | 4 ++++
- 1 file changed, 4 insertions(+)
-
-commit c835ff20c0db5a74cfc63496036b37e616f3b4c8
-Author: Luigi Ballabio <luigi.ballabio@gmail.com>
-Date:   Mon, 20 Jul 2020 13:16:43 +0200
-
-    Update version to 1.20-dev
+    Set version to 1.24-dev.
 
  Python/setup.py | 2 +-
  R/DESCRIPTION   | 2 +-
  configure.ac    | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-commit 0de66e2ea4140e10f256548baeb62c288563dec0
-Author: Marcin <mrybacki12@gmail.com>
-Date:   Fri, 22 May 2020 18:39:37 +0200
+commit fdbab6d8f9d1e1904255d02dfb07b7bd189b93bf
+Author: jackgillett101 <jack.gillett@cantab.net>
+Date:   Mon, 5 Jul 2021 22:38:21 +0800
 
-    Exposed a function casting an indexed cash flow.
+    Exposing cliquet options and pricing engines to SWIG
 
- SWIG/cashflows.i | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ SWIG/cliquetoptions.i | 118 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ SWIG/ql.i             |   1 +
+ 2 files changed, 119 insertions(+)

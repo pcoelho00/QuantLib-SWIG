@@ -30,7 +30,7 @@
 %{
 #include <ql/quantlib.hpp>
 
-#if QL_HEX_VERSION < 0x01200000
+#if QL_HEX_VERSION < 0x01230000
     #error using an old version of QuantLib, please update
 #endif
 
@@ -85,14 +85,6 @@
 #endif
 %}
 
-#ifdef SWIGPYTHON
-%{
-#if PY_VERSION_HEX < 0x02010000
-    #error Python version 2.1.0 or later is required
-#endif
-%}
-#endif
-
 #ifdef SWIGJAVA
 %include "enumtypesafe.swg"
 #endif
@@ -122,19 +114,25 @@
 %rename(Divide)        __div__;
 #endif
 
+%{
+// we do not want to see the deprecated warnings here
+QL_DEPRECATED_DISABLE_WARNING
+%}
 
 %include common.i
 %include vectors.i
 %include tuple.i
+%include asianoptions.i
+%include barrieroptions.i
 %include basketoptions.i
 %include blackformula.i
 %include bonds.i
 %include bondfunctions.i
 %include calendars.i
 %include calibrationhelpers.i
-%include callability.i
 %include capfloor.i
 %include cashflows.i
+%include cliquetoptions.i
 %include convertiblebonds.i
 %include credit.i
 %include creditdefaultswap.i
@@ -149,6 +147,7 @@
 %include exercise.i
 %include fdm.i
 %include fittedbondcurve.i
+%include forward.i
 %include forwardcurve.i
 %include fra.i
 %include functions.i
@@ -162,6 +161,7 @@
 %include interestrate.i
 %include interpolation.i
 %include linearalgebra.i
+%include lookbackoptions.i
 %include marketelements.i
 %include money.i
 %include montecarlo.i
@@ -182,10 +182,12 @@
 %include settings.i
 %include shortratemodels.i
 %include slv.i
+%include spreadoption.i
 %include statistics.i
 %include stochasticprocess.i
 %include swap.i
 %include swaption.i
+%include swingoption.i
 %include termstructures.i
 %include timebasket.i
 %include timeseries.i
@@ -194,7 +196,4 @@
 %include volatilities.i
 %include volatilitymodels.i
 %include zerocurve.i
-%include forward.i
-
-// to be deprecated
 %include old_volatility.i

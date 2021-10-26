@@ -3,6 +3,7 @@
  Copyright (C) 2005, 2006, 2007, 2008 StatPro Italia srl
  Copyright (C) 2009 Joseph Malicki
  Copyright (C) 2018 Matthias Lungwitz
+ Copyright (C) 2021 Marcin Rybacki
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -45,6 +46,9 @@ using QuantLib::DatedOISRateHelper;
 using QuantLib::FxSwapRateHelper;
 using QuantLib::OvernightIndexFutureRateHelper;
 using QuantLib::SofrFutureRateHelper;
+using QuantLib::CrossCurrencyBasisSwapRateHelper;
+using QuantLib::ConstNotionalCrossCurrencyBasisSwapRateHelper;
+using QuantLib::MtMCrossCurrencyBasisSwapRateHelper;
 %}
 
 struct Pillar {
@@ -214,7 +218,9 @@ class SwapRateHelper : public RateHelper {
                                         = Handle<YieldTermStructure>(),
             Natural settlementDays = Null<Natural>(),
             Pillar::Choice pillar = Pillar::LastRelevantDate,
-            Date customPillarDate = Date());
+            Date customPillarDate = Date(),
+            bool endOfMonth = false,
+            boost::optional<bool> withIndexedCoupons = boost::none);
     SwapRateHelper(
             Rate rate,
             const Period& tenor,
@@ -229,7 +235,9 @@ class SwapRateHelper : public RateHelper {
                                         = Handle<YieldTermStructure>(),
             Natural settlementDays = Null<Natural>(),
             Pillar::Choice pillar = Pillar::LastRelevantDate,
-            Date customPillarDate = Date());
+            Date customPillarDate = Date(),
+            bool endOfMonth = false,
+            boost::optional<bool> withIndexedCoupons = boost::none);
     SwapRateHelper(
             const Handle<Quote>& rate,
             const ext::shared_ptr<SwapIndex>& index,
@@ -238,7 +246,9 @@ class SwapRateHelper : public RateHelper {
             const Handle<YieldTermStructure>& discountingCurve
                                         = Handle<YieldTermStructure>(),
             Pillar::Choice pillar = Pillar::LastRelevantDate,
-            Date customPillarDate = Date());
+            Date customPillarDate = Date(),
+            bool endOfMonth = false,
+            boost::optional<bool> withIndexedCoupons = boost::none);
     SwapRateHelper(
             Rate rate,
             const ext::shared_ptr<SwapIndex>& index,
@@ -247,7 +257,9 @@ class SwapRateHelper : public RateHelper {
             const Handle<YieldTermStructure>& discountingCurve
                                         = Handle<YieldTermStructure>(),
             Pillar::Choice pillar = Pillar::LastRelevantDate,
-            Date customPillarDate = Date());
+            Date customPillarDate = Date(),
+            bool endOfMonth = false,
+            boost::optional<bool> withIndexedCoupons = boost::none);
     Spread spread();
     ext::shared_ptr<VanillaSwap> swap();
 };
@@ -256,8 +268,8 @@ class SwapRateHelper : public RateHelper {
 class BondHelper : public RateHelper {
   public:
     BondHelper(const Handle<Quote>& cleanPrice,
-                  const ext::shared_ptr<Bond>& bond,
-                  bool useCleanPrice = true);
+               const ext::shared_ptr<Bond>& bond,
+               BondPrice::Type priceType = BondPrice::Clean);
 
     ext::shared_ptr<Bond> bond();
 };
@@ -280,7 +292,7 @@ class FixedRateBondHelper : public BondHelper {
                   const Calendar& exCouponCalendar = Calendar(),
                   BusinessDayConvention exCouponConvention = Unadjusted,
                   bool exCouponEndOfMonth = false,
-                  bool useCleanPrice = true);
+                  BondPrice::Type priceType = BondPrice::Clean);
 
     ext::shared_ptr<FixedRateBond> fixedRateBond();
 };
@@ -307,7 +319,8 @@ class OISRateHelper : public RateHelper {
             const Period& forwardStart = 0 * Days, 
             const Spread overnightSpread = 0.0,
             Pillar::Choice pillar = Pillar::LastRelevantDate,
-            Date customPillarDate = Date());
+            Date customPillarDate = Date(), 
+            RateAveraging::Type averagingMethod = RateAveraging::Compound);
     ext::shared_ptr<OvernightIndexedSwap> swap();
 };
 
@@ -319,8 +332,9 @@ class DatedOISRateHelper : public RateHelper {
             const Date& endDate,
             const Handle<Quote>& rate,
             const ext::shared_ptr<OvernightIndex>& index,
-            const Handle<YieldTermStructure>& discountingCurve
-                                        = Handle<YieldTermStructure>());
+            const Handle<YieldTermStructure>& discountingCurve = Handle<YieldTermStructure>(),
+            bool telescopicValueDates = false, 
+            RateAveraging::Type averagingMethod = RateAveraging::Compound);
 };
 
 %shared_ptr(FxSwapRateHelper)
@@ -347,8 +361,8 @@ class OvernightIndexFutureRateHelper : public RateHelper {
             const Date& valueDate,
             const Date& maturityDate,
             const ext::shared_ptr<OvernightIndex>& index,
-            const Handle<Quote>& convexityAdjustment = Handle<Quote>(),
-            OvernightIndexFuture::NettingType type = OvernightIndexFuture::Compounding);
+            const Handle<Quote>& convexityAdjustment = Handle<Quote>(), 
+            RateAveraging::Type averagingMethod = RateAveraging::Compound);
 };
 
 %shared_ptr(SofrFutureRateHelper)
@@ -361,7 +375,7 @@ class SofrFutureRateHelper : public OvernightIndexFutureRateHelper {
             Frequency referenceFreq,
             const ext::shared_ptr<OvernightIndex>& index,
             const Handle<Quote>& convexityAdjustment = Handle<Quote>(),
-            OvernightIndexFuture::NettingType type = OvernightIndexFuture::Compounding);
+            RateAveraging::Type averagingMethod = RateAveraging::Compound);
     SofrFutureRateHelper(
             Real price,
             Month referenceMonth,
@@ -369,9 +383,57 @@ class SofrFutureRateHelper : public OvernightIndexFutureRateHelper {
             Frequency referenceFreq,
             const ext::shared_ptr<OvernightIndex>& index,
             Real convexityAdjustment = 0.0,
-            OvernightIndexFuture::NettingType type = OvernightIndexFuture::Compounding);
+            RateAveraging::Type averagingMethod = RateAveraging::Compound);
 };
 
+%shared_ptr(CrossCurrencyBasisSwapRateHelper)
+class CrossCurrencyBasisSwapRateHelper : public RateHelper {
+  public:
+    CrossCurrencyBasisSwapRateHelper(const Handle<Quote>& basis,
+                                     const Period& tenor,
+                                     Natural fixingDays,
+                                     Calendar calendar,
+                                     BusinessDayConvention convention,
+                                     bool endOfMonth,
+                                     ext::shared_ptr<IborIndex> baseCurrencyIndex,
+                                     ext::shared_ptr<IborIndex> quoteCurrencyIndex,
+                                     Handle<YieldTermStructure> collateralCurve,
+                                     bool isFxBaseCurrencyCollateralCurrency,
+                                     bool isBasisOnFxBaseCurrencyLeg);
+};
+
+%shared_ptr(ConstNotionalCrossCurrencyBasisSwapRateHelper)
+class ConstNotionalCrossCurrencyBasisSwapRateHelper : public RateHelper {
+  public:
+    ConstNotionalCrossCurrencyBasisSwapRateHelper(const Handle<Quote>& basis,
+                                                  const Period& tenor,
+                                                  Natural fixingDays,
+                                                  Calendar calendar,
+                                                  BusinessDayConvention convention,
+                                                  bool endOfMonth,
+                                                  ext::shared_ptr<IborIndex> baseCurrencyIndex,
+                                                  ext::shared_ptr<IborIndex> quoteCurrencyIndex,
+                                                  Handle<YieldTermStructure> collateralCurve,
+                                                  bool isFxBaseCurrencyCollateralCurrency,
+                                                  bool isBasisOnFxBaseCurrencyLeg);
+};
+
+%shared_ptr(MtMCrossCurrencyBasisSwapRateHelper)
+class MtMCrossCurrencyBasisSwapRateHelper : public RateHelper {
+  public:
+    MtMCrossCurrencyBasisSwapRateHelper(const Handle<Quote>& basis,
+                                        const Period& tenor,
+                                        Natural fixingDays,
+                                        Calendar calendar,
+                                        BusinessDayConvention convention,
+                                        bool endOfMonth,
+                                        ext::shared_ptr<IborIndex> baseCurrencyIndex,
+                                        ext::shared_ptr<IborIndex> quoteCurrencyIndex,
+                                        Handle<YieldTermStructure> collateralCurve,
+                                        bool isFxBaseCurrencyCollateralCurrency,
+                                        bool isBasisOnFxBaseCurrencyLeg,
+                                        bool isFxBaseCurrencyLegResettable);
+};
 
 // allow use of RateHelper vectors
 #if defined(SWIGCSHARP)
@@ -401,6 +463,18 @@ namespace std {
     }
     const ext::shared_ptr<OISRateHelper> as_oisratehelper(const ext::shared_ptr<RateHelper> helper) {
         return ext::dynamic_pointer_cast<OISRateHelper>(helper);
+    }
+    const ext::shared_ptr<CrossCurrencyBasisSwapRateHelper> as_crosscurrencybasisswapratehelper(
+            const ext::shared_ptr<RateHelper> helper) {
+        return ext::dynamic_pointer_cast<CrossCurrencyBasisSwapRateHelper>(helper);
+    }
+    const ext::shared_ptr<ConstNotionalCrossCurrencyBasisSwapRateHelper> as_constnotionalcrosscurrencybasisswapratehelper(
+            const ext::shared_ptr<RateHelper> helper) {
+        return ext::dynamic_pointer_cast<ConstNotionalCrossCurrencyBasisSwapRateHelper>(helper);
+    }
+    const ext::shared_ptr<MtMCrossCurrencyBasisSwapRateHelper> as_mtmcrosscurrencybasisswapratehelper(
+            const ext::shared_ptr<RateHelper> helper) {
+        return ext::dynamic_pointer_cast<MtMCrossCurrencyBasisSwapRateHelper>(helper);
     }
 %}
 

@@ -1,40 +1,38 @@
 
-Main changes for QuantLib-SWIG 1.20
+Main changes for QuantLib-SWIG 1.24
 ===================================
 
 More details on the changes are available in ChangeLog.txt and at
-<https://github.com/lballabio/QuantLib-SWIG/milestone/13?closed=1>.
+<https://github.com/lballabio/QuantLib-SWIG/milestone/17?closed=1>.
 
-- We're sunsetting support for Python 2.7, which reached end of life
-  in January 2020.  For the next release, we'll still check that the
-  wrappers work with 2.7.  After the next release, we'll make no
-  further effort to keep it working.
+- Breaking change: removed inflation-curve constructors taking a
+  nominal curve (they were deprecated and were removed from the C++
+  library in version 1.24).
 
-- SWIG wrappers now work also if the C++ library was compiled using
-  `std::shared_ptr` instead of `boost::shared_ptr` (thanks to Joseph
-  Wang).
+- Breaking change: removed the long-deprecated
+  `BaroneAdesiWhaleyEngine` and `BjerksundStenslandEngine` aliases for
+  `BaroneAdesiWhaleyApproximationEngine` and
+  `BjerksundStenslandApproximationEngine`, respectively.
 
-- The `BaroneAdesiWhaleyApproximationEngine` and
-  `BjerksundStenslandApproximationEngine` classes used to be renamed
-  to `BaroneAdesiWhaleyEngine` and `BjerksundStenslandEngine`,
-  respectively.  This is no longer the case.
+- Exported `CliquetOption` class and related pricing engines (thanks
+  to Jack Gillett).
 
-- Exported mixing factor to Heston SLV process and engines (thanks to
-  Jack Gillett).
+- Made the `Period` class equatable and comparable in C# (thanks to
+  Ralf Konrad).
 
-- Exported a number of inflation-related classes (thanks to Matthias
-  Lungwitz).
+- Exported the missing `endOfMonth` parameter in `SwapRateHelper`
+  constructor (thanks to Fidel Selva).
 
-- Exported Crank-Nicolson finite-differences scheme (thanks to Klaus
-  Spanderen).
+- Exported the new `ConstNotionalCrossCurrencyBasisSwapRateHelper` and
+  `MtMCrossCurrencyBasisSwapRateHelper` rate helpers (thanks to Marcin
+  Rybacki).
 
-- Exported `SwaptionVolatilityCube` class (thanks to Marcin Rybacki).
+- Exported the new `RiskyBondEngine` class.
 
-- Exported Cox-Ingersoll-Ross short-rate model.
+- Exported the new Chilean calendar.
 
-- Exported callable zero-coupon bond.
+- Exported the new `ThirdWednesdayInclusive` date-generation rule.
 
-- Exported SABR interpolation.
-
-- Made the `Date` class comparable and convertible to string in C#.
-
+- Exported the new `useIndexedCoupon` parameter in the constructors of
+  `BlackIborCouponPricer`, `IborLeg`, `SwapRateHelper` and
+  `VanillaSwap`.
